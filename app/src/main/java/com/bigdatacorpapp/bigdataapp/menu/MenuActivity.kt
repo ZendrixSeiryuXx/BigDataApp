@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.bigdatacorpapp.bigdataapp.R
 import com.bigdatacorpapp.bigdataapp.carrito.CarritoActivity
+import com.bigdatacorpapp.bigdataapp.favoritos.FavoritosFragment
 import com.bigdatacorpapp.bigdataapp.home.HomeFragment
 import com.bigdatacorpapp.bigdataapp.perfil.PerfilFragment
 import com.bigdatacorpapp.bigdataapp.promociones.PromocionesFragment
@@ -26,8 +27,6 @@ class MenuActivity: AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         val nav_carrito = findViewById<ImageView>(R.id.view_carrito)
-
-
         val nav_view = findViewById<BottomNavigationView>(R.id.nav_view)
 
 
@@ -58,7 +57,14 @@ class MenuActivity: AppCompatActivity() {
                     true
                 }
 
+                R.id.itemFavoritos ->{
+                    val fragment = FavoritosFragment.newInstance()
+                    openFragment(fragment)
+                    true
+                }
+
                 else -> false
+
             }
         }
 
