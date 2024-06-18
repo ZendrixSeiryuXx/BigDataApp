@@ -7,7 +7,7 @@
     <item
         android:id="@+id/itemFavoritos"
         android:title="Tus Favoritos"
-        android:icon="@drawable/baseline_exit_24"
+        android:icon="@drawable/baseline_favorite_24"
         />
 
     <item

@@ -21,8 +21,6 @@ class CarritoActivity: AppCompatActivity() {
             val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
 
-
-
         }
 
         if(savedInstanceState == null){

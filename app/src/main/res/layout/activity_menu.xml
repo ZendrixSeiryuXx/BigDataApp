@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    android:background="@color/background"
+    >
 
 
 
@@ -31,7 +33,7 @@
                 android:src="@drawable/baseline_view_headline_24"/>
 
             <ImageView
-                android:layout_width="300dp"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/logowhite"/>
 
@@ -73,7 +75,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/menu_lateral"/>
+        app:menu="@menu/menu_lateral"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+
+        android:background="@color/background"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
