@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/itemHome"
-        android:title="Home"
 
-        />
+
 
     <item
-        android:id="@+id/itemPromociones"
-        android:title="Promociones"
-
+        android:id="@+id/itemFavoritos"
+        android:title="Tus Favoritos"
+        android:icon="@drawable/baseline_exit_24"
         />
 
     <item
@@ -18,5 +15,6 @@
         android:title="CerrarSesion"
         android:icon="@drawable/baseline_exit_24"
         />
+
 
 </menu>
