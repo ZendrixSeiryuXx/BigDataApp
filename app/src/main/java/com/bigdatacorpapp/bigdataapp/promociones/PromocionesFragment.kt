@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 
 class PromocionesFragment: Fragment() {
@@ -18,6 +20,30 @@ class PromocionesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recyclerPromociones = view.findViewById<RecyclerView>(R.id.recyclerPromociones)
+
+
+        val listPromociones = listOf(
+            Promociones(R.drawable.aaa),
+            Promociones(R.drawable.promocion_1),
+            Promociones(R.drawable.aaa),
+            Promociones(R.drawable.promocion_1),
+            Promociones(R.drawable.aaa),
+            Promociones(R.drawable.promocion_1),
+            Promociones(R.drawable.aaa),
+            Promociones(R.drawable.promocion_1),
+            Promociones(R.drawable.aaa),
+            Promociones(R.drawable.promocion_1),
+            Promociones(R.drawable.aaa),
+            Promociones(R.drawable.promocion_1),
+
+        )
+
+
+        val adapter = PromocionesAdapter(listPromociones)
+        recyclerPromociones.adapter = adapter
+        recyclerPromociones.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
     companion object{
