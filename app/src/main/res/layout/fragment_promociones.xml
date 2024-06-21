@@ -23,4 +23,22 @@
         />
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sag"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
