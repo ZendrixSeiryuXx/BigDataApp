@@ -13,8 +13,6 @@ import com.bigdatacorpapp.bigdataapp.marca.Marca
 import com.bigdatacorpapp.bigdataapp.marca.MarcaAdapter
 import com.bigdatacorpapp.bigdataapp.producto.Producto
 import com.bigdatacorpapp.bigdataapp.producto.ProductoAdapter
-import com.cibertec.cibertecapp.inicio.InicioFragment
-
 class HomeFragment:Fragment() {
 
     override fun onCreateView(
@@ -60,6 +58,6 @@ class HomeFragment:Fragment() {
     }
 
     companion object{
-        fun newInstance() : InicioFragment = InicioFragment()
+        fun newInstance() : HomeFragment = HomeFragment()
     }
 }
