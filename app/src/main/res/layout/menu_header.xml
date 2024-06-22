@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:gravity="center_vertical"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:paddingStart="20dp"
     android:background="@color/background">
 
@@ -19,7 +19,9 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Jorge Ventura"/>
+        android:text="BIG DATA"
+        android:textColor="@color/white"
+        android:layout_marginStart="20dp"/>
 
 
 </LinearLayout>
