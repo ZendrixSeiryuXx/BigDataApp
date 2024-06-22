@@ -7,22 +7,14 @@
     android:background="@color/background"
     tools:context=".carrito.CarritoActivity">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclercarrito"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Carrito"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:textColor="@color/white"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-
-        />
-
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:listitem="@layout/item_carrito" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
