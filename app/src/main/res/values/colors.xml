@@ -6,4 +6,5 @@
     <color name="menu">#1A1A1A</color>
     <color name="menu_text">#E5E5E5</color>
     <color name="botonIniciar">#FF2D2D</color>
+    <color name="linea">#464646</color>
 </resources>
