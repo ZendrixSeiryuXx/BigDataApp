@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "302184650040",
+    "project_id": "bigdataapp-d2252",
+    "storage_bucket": "bigdataapp-d2252.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302184650040:android:d18377689b287bb8ca5dcd",
+        "android_client_info": {
+          "package_name": "com.bigdatacorpapp.bigdataapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxMETH38EyaEVcrfq_y16Q7JZJ_H-OR2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

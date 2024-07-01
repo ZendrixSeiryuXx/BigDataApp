@@ -10,6 +10,12 @@ material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 
+googleServiceVersion="4.4.1"
+firebaseBomV="33.1.1"
+firebaseAnalyticsV="21.3.0"
+firebaseAuthV="22.1.2"
+
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -20,7 +26,14 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+firebaseBom = {group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBomV"}
+firebaseAnalytics = {group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalyticsV"}
+firebaseAuth = {group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthV"}
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
+
+googleService={id="com.google.gms.google-services", version.ref="googleServiceVersion"}
