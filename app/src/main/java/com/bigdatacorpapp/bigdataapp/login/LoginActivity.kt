@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bigdatacorpapp.bigdataapp.R
-import com.bigdatacorpapp.bigdataapp.home.HomeActivity
 import com.bigdatacorpapp.bigdataapp.menu.MenuActivity
 import com.bigdatacorpapp.bigdataapp.register.RegisterActivity
 

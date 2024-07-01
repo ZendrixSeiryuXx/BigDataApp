@@ -13,12 +13,12 @@ import com.bigdatacorpapp.bigdataapp.R
 import com.bigdatacorpapp.bigdataapp.carrito.CarritoActivity
 import com.bigdatacorpapp.bigdataapp.favoritos.FavoritosActivity
 import com.bigdatacorpapp.bigdataapp.favoritos.FavoritosFragment
-import com.bigdatacorpapp.bigdataapp.home.HomeFragment
 import com.bigdatacorpapp.bigdataapp.login.LoginActivity
 import com.bigdatacorpapp.bigdataapp.perfil.PerfilFragment
 import com.bigdatacorpapp.bigdataapp.promociones.PromocionesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.bigdatacorpapp.bigdataapp.home.HomeFragment
 
 class MenuActivity: AppCompatActivity(), MenuDraweAction {
 
@@ -39,8 +39,8 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
         }
 
 
-        nav_view.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        nav_view.setOnItemSelectedListener {
+            when (it.itemId) {
                 R.id.itemHome -> {
                     val fragment = HomeFragment.newInstance()
                     openFragment(fragment)

@@ -10,11 +10,41 @@
         android:icon="@drawable/baseline_favorite_24"
         />
 
+
+    <item
+        android:id="@+id/itemAsus"
+        android:title="ASUS"
+        />
+
+
+    <item
+        android:id="@+id/itemLenovo"
+        android:title="LENOVO"
+        />
+
+
+
+    <item
+        android:id="@+id/itemGigabyte"
+        android:title="GIGABYTE"
+        />
+
+
+
+    <item
+        android:id="@+id/itemDell"
+        android:title="DELL"
+        />
+
+
+
     <item
         android:id="@+id/itemSalir"
         android:title="CerrarSesion"
-        android:icon="@drawable/baseline_exit_24"
+
         />
+
+
 
 
 </menu>
