@@ -55,15 +55,18 @@ dependencies {
     //
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
-    //
+    //FIN
+
+    //GLIDE
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     //FIREBASE
     implementation(libs.firebaseBom)
     implementation(libs.firebaseAnalytics)
     implementation(libs.firebaseAuth)
+    implementation(libs.firebase.firestore.ktx)
     //MAPA
     implementation(libs.googleMaps)
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

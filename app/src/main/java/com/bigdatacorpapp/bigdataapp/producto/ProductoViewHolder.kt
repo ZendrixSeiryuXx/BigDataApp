@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
+import com.bumptech.glide.Glide
 
 class ProductoViewHolder(inflater: LayoutInflater,viewGroup: ViewGroup): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_producto,viewGroup,false)) {
     private var discount: TextView? = null
@@ -26,11 +27,18 @@ class ProductoViewHolder(inflater: LayoutInflater,viewGroup: ViewGroup): Recycle
 
     fun bind(producto: Producto){
         discount?.text = producto.descuento
-        imageItem?.setImageResource(producto.imagen)
         marca?.text = producto.marca
         nombre?.text = producto.titulo
         costoFinal?.text = producto.precio2
         costoInicial?.text = producto.precio1
+
+        imageItem?.let {
+            Glide.with(it.context)
+                .load(producto.imagen)
+                .placeholder(R.drawable.ic_placeholder)
+                .error(R.drawable.ic_placeholder)
+                .into(it)
+        }
     }
 
 }

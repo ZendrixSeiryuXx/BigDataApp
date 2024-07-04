@@ -15,6 +15,7 @@ firebaseBomV="33.1.1"
 firebaseAnalyticsV="21.3.0"
 firebaseAuthV="22.1.2"
 googleMapsV="19.0.0"
+firebaseFirestoreKtx = "25.0.0"
 
 
 [libraries]
@@ -30,6 +31,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 firebaseBom = {group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBomV"}
 firebaseAnalytics = {group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalyticsV"}
 firebaseAuth = {group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthV"}
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 googleMaps = {group = "com.google.android.gms", name = "play-services-maps", version.ref = "googleMapsV"}
 
 

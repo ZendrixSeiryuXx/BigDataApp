@@ -47,10 +47,10 @@
 
             android:id="@+id/edtSearch"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:hint="Buscar"
             android:textColor="@color/white"
-            android:textSize="10dp"/>
+            android:textSize="12dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:listitem="@layout/item_marca"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/edtSearchBox">
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -68,7 +69,8 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_producto"
         app:layout_constraintTop_toBottomOf="@+id/recyclerMarcas"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:paddingBottom="300dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
