@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BigDataApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD0SOjs1I03kSn7vtw-d9vRdf1mUko2yw4"/>
+
         <activity
             android:name=".menu.MenuActivity"
             android:exported="true">
