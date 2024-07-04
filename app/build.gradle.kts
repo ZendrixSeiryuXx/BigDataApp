@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.firebaseBom)
     implementation(libs.firebaseAnalytics)
     implementation(libs.firebaseAuth)
-    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebaseFirestoreKtx)
     //MAPA
     implementation(libs.googleMaps)
 
