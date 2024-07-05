@@ -61,7 +61,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     //FIREBASE
-    implementation(libs.firebaseBom)
+    implementation(platform(libs.firebaseBom))
     implementation(libs.firebaseAnalytics)
     implementation(libs.firebaseAuth)
     implementation(libs.firebaseFirestoreKtx)
