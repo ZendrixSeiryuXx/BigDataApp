@@ -2,9 +2,9 @@ package com.bigdatacorpapp.bigdataapp.menu
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -19,25 +19,37 @@ import com.bigdatacorpapp.bigdataapp.promociones.PromocionesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.bigdatacorpapp.bigdataapp.home.HomeFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-class MenuActivity: AppCompatActivity(), MenuDraweAction {
+class MenuActivity : AppCompatActivity(), MenuDraweAction {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationViewLateral: NavigationView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private lateinit var nombreUserTextView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        drawerLayout = findViewById(R.id.drawerLayout)
+        navigationViewLateral = findViewById(R.id.nav_view_lateral)
+        val menuLateral = findViewById<ImageView>(R.id.menuLateral)
         val nav_carrito = findViewById<ImageView>(R.id.view_carrito)
         val nav_view = findViewById<BottomNavigationView>(R.id.nav_view)
 
+        val headerView = navigationViewLateral.getHeaderView(0)
+        nombreUserTextView = headerView.findViewById(R.id.nombreUser)
 
         nav_carrito.setOnClickListener {
             val intent = Intent(this, CarritoActivity::class.java)
             startActivity(intent)
-
         }
-
 
         nav_view.setOnItemSelectedListener {
             when (it.itemId) {
@@ -46,34 +58,20 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
                     openFragment(fragment)
                     true
                 }
-
                 R.id.itemPromociones -> {
                     val fragment = PromocionesFragment.newInstance()
                     openFragment(fragment)
                     true
                 }
-
                 R.id.itemPerfil -> {
                     val fragment = PerfilFragment.newInstance()
                     openFragment(fragment)
                     true
                 }
-
-
                 else -> false
-
             }
         }
         nav_view.selectedItemId = R.id.itemHome
-
-
-
-
-
-
-        drawerLayout = findViewById(R.id.drawerLayout)
-        navigationViewLateral = findViewById(R.id.nav_view_lateral)
-        val menuLateral = findViewById<ImageView>(R.id.menuLateral)
 
         menuLateral.setOnClickListener {
             drawerLayout.openDrawer(navigationViewLateral)
@@ -96,27 +94,45 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
             }
         }
 
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            Log.d("MenuActivity", "Current user UID: ${currentUser.uid}")
+            loadUserName(currentUser.uid)
+        } else {
+            Log.d("MenuActivity", "No current user")
+            nombreUserTextView.text = "Usuario"
+        }
+    }
 
-
-
+    private fun loadUserName(uid: String) {
+        db.collection("usuarios").document(uid).get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val nombre = document.getString("nombres")
+                    Log.d("MenuActivity", "Nombre: $nombre")
+                    nombreUserTextView.text = nombre ?: "Usuario"
+                } else {
+                    Log.d("MenuActivity", "No document found")
+                    nombreUserTextView.text = "Usuario"
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("MenuActivity", "Error getting document", exception)
+                nombreUserTextView.text = "Usuario"
+            }
     }
 
     fun openFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_menu, fragment)
         transaction.commit()
-
     }
 
-    override fun openMenu(){
+    override fun openMenu() {
         drawerLayout.openDrawer(GravityCompat.START)
     }
-
 }
 
-
-
-interface MenuDraweAction{
+interface MenuDraweAction {
     fun openMenu()
 }
-
