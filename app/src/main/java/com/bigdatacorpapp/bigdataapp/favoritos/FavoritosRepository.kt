@@ -13,14 +13,4 @@ class FavoritosRepository {
             .addOnSuccessListener { onComplete(true) }
             .addOnFailureListener { onComplete(false) }
     }
-
-    fun obtenerFavoritos(userId: String, onComplete: (List<Producto>) -> Unit) {
-        val favoritosCollection = userCollection.document(userId).collection("favoritos")
-        favoritosCollection.get()
-            .addOnSuccessListener { result ->
-                val favoritos = result.map { it.toObject(Producto::class.java) }
-                onComplete(favoritos)
-            }
-            .addOnFailureListener { onComplete(emptyList()) }
-    }
 }

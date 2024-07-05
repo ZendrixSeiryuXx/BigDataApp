@@ -5,8 +5,13 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 import com.bigdatacorpapp.bigdataapp.menu.MenuActivity
+import com.bigdatacorpapp.bigdataapp.producto.ProductoAdapter
+import com.google.firebase.auth.FirebaseAuth
 
 class FavoritosActivity : AppCompatActivity() {
 

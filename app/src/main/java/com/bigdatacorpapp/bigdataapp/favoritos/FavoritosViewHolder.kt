@@ -13,7 +13,7 @@ class FavoritosViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
 
     private var titulo: TextView? = itemView.findViewById(R.id.textNombreFavorito)
     private var marca: TextView? = itemView.findViewById(R.id.textMarcaProducto)
-    private var imagen: ImageView? = itemView.findViewById(R.id.imageItem)
+    private var imagen: ImageView? = itemView.findViewById(R.id.imgProducto)
     private var precio1: TextView? = itemView.findViewById(R.id.textPrecio)
     private var precio2: TextView? = itemView.findViewById(R.id.textPrecio)
     private var descuento: TextView? = itemView.findViewById(R.id.discount)

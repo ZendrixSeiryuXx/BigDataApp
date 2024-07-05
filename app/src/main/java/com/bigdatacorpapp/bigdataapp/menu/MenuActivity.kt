@@ -21,10 +21,11 @@ import com.google.android.material.navigation.NavigationView
 import com.bigdatacorpapp.bigdataapp.home.HomeFragment
 import com.bigdatacorpapp.bigdataapp.mapa.MapaActivity
 
-class MenuActivity: AppCompatActivity(), MenuDraweAction {
+class MenuActivity : AppCompatActivity(), MenuDraweAction {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationViewLateral: NavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -32,12 +33,10 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
         val nav_carrito = findViewById<ImageView>(R.id.view_carrito)
         val nav_view = findViewById<BottomNavigationView>(R.id.nav_view)
 
-
         nav_carrito.setOnClickListener {
             val intent = Intent(this, CarritoActivity::class.java)
             startActivity(intent)
         }
-
 
         nav_view.setOnItemSelectedListener {
             when (it.itemId) {
@@ -61,15 +60,9 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
 
 
                 else -> false
-
             }
         }
         nav_view.selectedItemId = R.id.itemHome
-
-
-
-
-
 
         drawerLayout = findViewById(R.id.drawerLayout)
         navigationViewLateral = findViewById(R.id.nav_view_lateral)
@@ -87,7 +80,7 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
                     true
                 }
 
-                R.id.itemMap ->{
+                R.id.itemMap -> {
                     startActivity(Intent(this, MapaActivity::class.java))
                     true
                 }
@@ -102,28 +95,19 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
                 drawerLayout.closeDrawer(navigationViewLateral)
             }
         }
-
-
-
-
     }
 
     fun openFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_menu, fragment)
         transaction.commit()
-
     }
 
-    override fun openMenu(){
+    override fun openMenu() {
         drawerLayout.openDrawer(GravityCompat.START)
     }
-
 }
 
-
-
-interface MenuDraweAction{
+interface MenuDraweAction {
     fun openMenu()
 }
-

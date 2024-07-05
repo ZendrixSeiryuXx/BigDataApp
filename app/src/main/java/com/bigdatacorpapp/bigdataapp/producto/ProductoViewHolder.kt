@@ -37,6 +37,7 @@ class ProductoViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
         costoFinal?.text = producto.precio2
         costoInicial?.text = producto.precio1
 
+
         imageItem?.let {
             Glide.with(it.context)
                 .load(producto.imagen)
