@@ -24,6 +24,8 @@ class FavoritosFragment: Fragment() {
 
         val recyclerFavoritos = view.findViewById<RecyclerView>(R.id.recyclerFavoritos)
 
+
+
         val listFavoritos = listOf<Favorito>(
             Favorito(R.drawable.rogstrix_g15, "Rog Strix G15", "JA JA JA si funciona", 5000.0),
             Favorito(R.drawable.rogstrix_g15, "Rog  G15", "JA JA JA si funciona", 5.000),

@@ -21,6 +21,7 @@ import com.google.android.material.navigation.NavigationView
 import com.bigdatacorpapp.bigdataapp.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.bigdatacorpapp.bigdataapp.mapa.MapaActivity
 
 class MenuActivity : AppCompatActivity(), MenuDraweAction {
 
@@ -79,10 +80,17 @@ class MenuActivity : AppCompatActivity(), MenuDraweAction {
 
         navigationViewLateral.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+
                 R.id.itemFavoritos -> {
                     startActivity(Intent(this, FavoritosActivity::class.java))
                     true
                 }
+
+                /*R.id.itemMap ->{
+                    startActivity(Intent(this, MapaActivity::class.java))
+                    true
+                }*/
+
                 R.id.itemSalir -> {
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()

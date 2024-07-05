@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 
 class PromocionesFragment: Fragment() {
+
+    private lateinit var viewModel: PromocionesViewModel
+    private lateinit var adapter: PromocionesAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,26 +29,18 @@ class PromocionesFragment: Fragment() {
         val recyclerPromociones = view.findViewById<RecyclerView>(R.id.recyclerPromociones)
 
 
-        val listPromociones = listOf(
-            Promociones(R.drawable.aaa),
-            Promociones(R.drawable.promocion_1),
-            Promociones(R.drawable.aaa),
-            Promociones(R.drawable.promocion_1),
-            Promociones(R.drawable.aaa),
-            Promociones(R.drawable.promocion_1),
-            Promociones(R.drawable.aaa),
-            Promociones(R.drawable.promocion_1),
-            Promociones(R.drawable.aaa),
-            Promociones(R.drawable.promocion_1),
-            Promociones(R.drawable.aaa),
-            Promociones(R.drawable.promocion_1),
-
-        )
-
-
-        val adapter = PromocionesAdapter(listPromociones)
+        val adapter = PromocionesAdapter()
         recyclerPromociones.adapter = adapter
-        recyclerPromociones.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerPromociones.layoutManager = LinearLayoutManager(activity)
+
+        viewModel = ViewModelProvider(this).get(PromocionesViewModel::class.java)
+        viewModel.getPromociones()
+        viewModel.promocionesListMutable.observe(viewLifecycleOwner) {
+            if(it.isNotEmpty()){
+                adapter.setPromociones(it)
+            }
+        }
+
     }
 
     companion object{
