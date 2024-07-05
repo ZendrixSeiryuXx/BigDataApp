@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bigdatacorpapp.bigdataapp"
-        minSdk = 29
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -45,7 +45,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    //Librerias para room(creo que está mal)
+    //Librerias para room
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
@@ -57,12 +57,17 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
     //FIN
 
+    //GLIDE
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
     //FIREBASE
-    //
-    implementation(libs.firebaseBom)
+    implementation(platform(libs.firebaseBom))
     implementation(libs.firebaseAnalytics)
     implementation(libs.firebaseAuth)
-    //
+    implementation(libs.firebaseFirestoreKtx)
+    implementation(libs.firebaseFunctions)
+    //MAPA
+    implementation(libs.googleMaps)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

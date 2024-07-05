@@ -4,18 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductoAdapter(val list: List<Producto>): RecyclerView.Adapter<ProductoViewHolder>() {
+class ProductoAdapter(): RecyclerView.Adapter<ProductoViewHolder>() {
+    private var productoList = emptyList<Producto>()
+    fun setProducto(producto: List<Producto>){
+        productoList = producto
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ProductoViewHolder(inflater,parent)
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount(): Int = productoList.size
 
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        val producto = list[position]
+        val producto = productoList[position]
         holder.bind(producto)
     }
 }
