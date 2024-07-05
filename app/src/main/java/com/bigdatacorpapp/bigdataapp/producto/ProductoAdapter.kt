@@ -14,6 +14,8 @@ class ProductoAdapter(private val addToFavorites: (Producto) -> Unit) :
         notifyDataSetChanged()
     }
 
+    //new
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ProductoViewHolder(inflater, parent)
