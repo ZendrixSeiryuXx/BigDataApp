@@ -25,7 +25,6 @@ class LoginActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.txtCorreoLogin)
         val password = findViewById<EditText>(R.id.txtContrasenaLogin)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val btnCrearCuenta = findViewById<Button>(R.id.btnCrearCuenta)
         val olvpassword = findViewById<TextView>(R.id.olvidasteContra)
         val btnRegistrar = findViewById<Button>(R.id.btnCrearCuenta)
 
@@ -39,6 +38,12 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+        olvpassword.setOnClickListener{
+            val intent= Intent(this, RecuperarActivity::class.java)
+            startActivity(intent)
+        }
+
         observerLiveData()
     }
     private fun observerLiveData() {
@@ -50,16 +55,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Verificar los datos ingresados",
                     Toast.LENGTH_SHORT).show()
             }
-        }
-
-        btnCrearCuenta.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
-
-        olvpassword.setOnClickListener{
-            val intent= Intent(this, RecuperarActivity::class.java)
-            startActivity(intent)
         }
     }
 }
