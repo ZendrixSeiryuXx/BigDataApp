@@ -3,12 +3,14 @@ package com.bigdatacorpapp.bigdataapp.producto
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bigdatacorpapp.bigdataapp.favoritos.FavoritosRepository
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ProductoViewModel:ViewModel() {
+class ProductoViewModel : ViewModel() {
     private lateinit var firestore: FirebaseFirestore
     val productoListMutable = MutableLiveData<List<Producto>>()
-    var productoList  = arrayListOf<Producto>()
+    var productoList = arrayListOf<Producto>()
+    private val favoritosRepository = FavoritosRepository()
 
     fun getProducto() {
         firestore = FirebaseFirestore.getInstance()
@@ -27,7 +29,7 @@ class ProductoViewModel:ViewModel() {
                     val precio2 = data["precio2"] as String
                     val descuento = data["descuento"] as String
 
-                    val producto = Producto(titulo, marca, imagen, precio1, precio2, descuento)
+                    val producto = Producto(id, titulo, marca, imagen, precio1, precio2, descuento)
                     productoList.add(producto)
                 }
                 productoListMutable.value = productoList
@@ -35,5 +37,17 @@ class ProductoViewModel:ViewModel() {
             .addOnFailureListener { exception ->
                 Log.e("ProductoViewModel", "Error al obtener productos", exception)
             }
+    }
+
+    fun agregarAFavoritos(userId: String, producto: Producto) {
+        favoritosRepository.agregarAFavoritos(userId, producto) { success ->
+            if (success) {
+                Log.d("ProductoViewModel", "Producto agregado a favoritos")
+                // Aquí podrías actualizar la UI o realizar alguna acción adicional si es necesario
+            } else {
+                Log.e("ProductoViewModel", "Error al agregar a favoritos")
+                // Manejo de error si falla la operación de agregar a favoritos
+            }
+        }
     }
 }

@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 
+class FavoritosFragment : Fragment() {
 
-class FavoritosFragment: Fragment() {
+    private lateinit var viewModel: FavoritosViewModel
+    private lateinit var adapter: FavoritosAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,42 +27,19 @@ class FavoritosFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerFavoritos = view.findViewById<RecyclerView>(R.id.recyclerFavoritos)
+        adapter = FavoritosAdapter()
 
-
-
-        val listFavoritos = listOf<Favorito>(
-            Favorito(R.drawable.rogstrix_g15, "Rog Strix G15", "JA JA JA si funciona", 5000.0),
-            Favorito(R.drawable.rogstrix_g15, "Rog  G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-            Favorito(R.drawable.rogstrix_g15, " G15", "JA JA JA si funciona", 5.000),
-
-            )
-
-        val adapter = FavoritosAdapter(listFavoritos)
         recyclerFavoritos.adapter = adapter
-        recyclerFavoritos.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerFavoritos.layoutManager = LinearLayoutManager(activity)
+
+        viewModel = ViewModelProvider(this).get(FavoritosViewModel::class.java)
+        viewModel.getFavoritos()
+        viewModel.favoritosListMutable.observe(viewLifecycleOwner) { favoritosList ->
+            adapter.setFavoritos(favoritosList)
+        }
     }
 
-
-    companion object{
-        fun newInstance() : FavoritosFragment = FavoritosFragment()
+    companion object {
+        fun newInstance(): FavoritosFragment = FavoritosFragment()
     }
 }

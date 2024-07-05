@@ -2,19 +2,23 @@ package com.bigdatacorpapp.bigdataapp.producto
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 import com.bumptech.glide.Glide
 
-class ProductoViewHolder(inflater: LayoutInflater,viewGroup: ViewGroup): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_producto,viewGroup,false)) {
+class ProductoViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_producto, viewGroup, false)) {
+
     private var discount: TextView? = null
     private var imageItem: ImageView? = null
     private var marca: TextView? = null
     private var nombre: TextView? = null
     private var costoFinal: TextView? = null
     private var costoInicial: TextView? = null
+    private var favoriteButton: Button? = null
 
     init {
         discount = itemView.findViewById(R.id.discount)
@@ -23,9 +27,10 @@ class ProductoViewHolder(inflater: LayoutInflater,viewGroup: ViewGroup): Recycle
         nombre = itemView.findViewById(R.id.nombre)
         costoFinal = itemView.findViewById(R.id.costoFinal)
         costoInicial = itemView.findViewById(R.id.costoInicial)
+        favoriteButton = itemView.findViewById(R.id.favoritoButton)
     }
 
-    fun bind(producto: Producto){
+    fun bind(producto: Producto, addToFavorites: (Producto) -> Unit) {
         discount?.text = producto.descuento
         marca?.text = producto.marca
         nombre?.text = producto.titulo
@@ -39,6 +44,9 @@ class ProductoViewHolder(inflater: LayoutInflater,viewGroup: ViewGroup): Recycle
                 .error(R.drawable.ic_placeholder)
                 .into(it)
         }
-    }
 
+        favoriteButton?.setOnClickListener {
+            addToFavorites(producto)
+        }
+    }
 }

@@ -6,34 +6,27 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bigdatacorpapp.bigdataapp.R
-import com.bigdatacorpapp.bigdataapp.carrito.CarritoFragment
 import com.bigdatacorpapp.bigdataapp.menu.MenuActivity
 
-class FavoritosActivity: AppCompatActivity() {
+class FavoritosActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritos)
 
+        val fragment = FavoritosFragment.newInstance()
+        openFragment(fragment)
 
-        val menuback = findViewById<ImageView>(R.id.backMenus)
-
-        menuback.setOnClickListener{
+        val menuBack = findViewById<ImageView>(R.id.backMenus)
+        menuBack.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }
-
-        if(savedInstanceState == null){
-            openFragment(FavoritosFragment.newInstance())
-        }
-
-
-    }
-    fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_favoritos, fragment)
-        transaction.commit()
-
-
     }
 
+    private fun openFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_favoritos, fragment)
+            .commit()
+    }
 }

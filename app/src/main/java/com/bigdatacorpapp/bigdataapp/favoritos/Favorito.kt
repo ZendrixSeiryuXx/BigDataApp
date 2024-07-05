@@ -1,6 +1,6 @@
 package com.bigdatacorpapp.bigdataapp.favoritos
 
-data class Favorito(
+data class Favoritos(
     val titulo: String,
     val marca: String,
     val imagen: String,
