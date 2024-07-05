@@ -41,9 +41,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_map))
 
-        val marker = LatLng(-8.105742832163953, -79.07425305158458)
+        val marker = LatLng(-8.113959, -79.029590)
         map.addMarker(
             MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.marcador))
@@ -51,7 +50,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 .title("BigData")
             )
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(marker, 18f)
+            CameraUpdateFactory.newLatLngZoom(marker, 20f)
         )
     }
 }

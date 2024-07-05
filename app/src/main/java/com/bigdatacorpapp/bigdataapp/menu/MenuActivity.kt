@@ -19,6 +19,7 @@ import com.bigdatacorpapp.bigdataapp.promociones.PromocionesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.bigdatacorpapp.bigdataapp.home.HomeFragment
+import com.bigdatacorpapp.bigdataapp.mapa.MapaActivity
 
 class MenuActivity: AppCompatActivity(), MenuDraweAction {
 
@@ -35,7 +36,6 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
         nav_carrito.setOnClickListener {
             val intent = Intent(this, CarritoActivity::class.java)
             startActivity(intent)
-
         }
 
 
@@ -81,10 +81,17 @@ class MenuActivity: AppCompatActivity(), MenuDraweAction {
 
         navigationViewLateral.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+
                 R.id.itemFavoritos -> {
                     startActivity(Intent(this, FavoritosActivity::class.java))
                     true
                 }
+
+                R.id.itemMap ->{
+                    startActivity(Intent(this, MapaActivity::class.java))
+                    true
+                }
+
                 R.id.itemSalir -> {
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()

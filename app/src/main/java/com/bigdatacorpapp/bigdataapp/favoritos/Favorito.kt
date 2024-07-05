@@ -1,8 +1,10 @@
 package com.bigdatacorpapp.bigdataapp.favoritos
 
 data class Favorito(
-    val imagenProducto : Int,
-    val nombre : String,
-    val descripcion : String,
-    val precio : Double
+    val titulo: String,
+    val marca: String,
+    val imagen: String,
+    val precio1: String,
+    val precio2: String,
+    val descuento: String
 )

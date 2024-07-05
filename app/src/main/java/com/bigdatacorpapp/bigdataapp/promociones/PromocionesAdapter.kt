@@ -4,8 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class PromocionesAdapter( val list: List<Promociones>):
-    RecyclerView.Adapter<PromocionesViewHolder>(){
+class PromocionesAdapter(): RecyclerView.Adapter<PromocionesViewHolder>() {
+
+    private var promocionesList = emptyList<Promociones>()
+
+    fun setPromociones(promociones: List<Promociones>){
+        promocionesList = promociones
+        notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromocionesViewHolder {
@@ -14,13 +20,11 @@ class PromocionesAdapter( val list: List<Promociones>):
     }
 
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount(): Int = promocionesList.size
 
     override fun onBindViewHolder(holder: PromocionesViewHolder, position: Int) {
-        val prmocion = list[position]
-        holder.bind(prmocion)
+        val promociones = promocionesList[position]
+        holder.bind(promociones)
     }
 
 }
