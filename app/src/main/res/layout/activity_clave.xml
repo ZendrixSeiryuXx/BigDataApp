@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
-    >
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -31,8 +30,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
-        android:gravity="center"
-        >
+        android:gravity="center">
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -42,7 +41,6 @@
             android:layout_marginBottom="15dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Correo Electrónico"
@@ -50,47 +48,23 @@
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
-            android:inputType="textEmailAddress"
             android:layout_marginBottom="25dp"
-            app:boxStrokeColor="@color/botonIniciar"
-
-
-            >
+            app:boxStrokeColor="@color/botonIniciar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Icorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-
-                />
-
-
+                android:hint="ejemplo@correo.com"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            android:inputType="textPassword"
-            android:layout_marginBottom="25dp"
-            app:boxStrokeColor="@color/botonIniciar"
-
-
-            />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRecuperar"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:text="Enviar"
@@ -98,10 +72,6 @@
                 android:backgroundTint="@color/botonIniciar"
                 android:layout_alignParentEnd="true"
                 android:layout_marginBottom="20dp"/>
-
         </RelativeLayout>
-
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

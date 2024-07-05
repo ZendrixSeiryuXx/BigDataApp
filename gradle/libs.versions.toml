@@ -16,6 +16,7 @@ firebaseAnalyticsV="21.3.0"
 firebaseAuthV="22.1.2"
 googleMapsV="19.0.0"
 firebaseFirestoreKtxV = "25.0.0"
+fireFunctions = "20.0.0"
 
 
 [libraries]
@@ -33,6 +34,8 @@ firebaseAnalytics = {group = "com.google.firebase", name = "firebase-analytics",
 firebaseAuth = {group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthV"}
 firebaseFirestoreKtx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtxV" }
 googleMaps = {group = "com.google.android.gms", name = "play-services-maps", version.ref = "googleMapsV"}
+firebaseFunctions = {group = "com.google.firebase", name= "firebase-functions" , version.ref="fireFunctions"}
+
 
 
 [plugins]

@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bigdatacorpapp.bigdataapp"
-        minSdk = 29
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.firebaseAnalytics)
     implementation(libs.firebaseAuth)
     implementation(libs.firebaseFirestoreKtx)
+    implementation(libs.firebaseFunctions)
     //MAPA
     implementation(libs.googleMaps)
 
