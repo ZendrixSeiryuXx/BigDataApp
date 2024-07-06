@@ -20,7 +20,7 @@
             android:value="AIzaSyD0SOjs1I03kSn7vtw-d9vRdf1mUko2yw4"/>
 
         <activity
-            android:name=".menu.MenuActivity"
+            android:name=".bienvenida.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +28,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".menu.MenuActivity"/>
         <activity android:name=".recuperar.RecuperarActivity"/>
         <activity android:name=".recuperar.ResetPasswordActivity"/>
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.LoginActivity"/>
+
 
         <activity android:name=".carrito.CarritoActivity"/>
         <activity android:name=".favoritos.FavoritosActivity"/>

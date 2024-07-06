@@ -1,28 +1,44 @@
 package com.bigdatacorpapp.bigdataapp.favoritos
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bigdatacorpapp.bigdataapp.R
 
-class FavoritosAdapter( val list: List<Favorito>):
-    RecyclerView.Adapter<FavoritosViewHolder>(){
+class FavoritosAdapter(private val viewModel: FavoritosViewModel) :
+    RecyclerView.Adapter<FavoritosViewHolder>() {
 
-    // Instancia el ViewHolder
+    private var favoritosList = emptyList<Favoritos>()
+
+    fun setFavoritos(favoritos: List<Favoritos>) {
+        favoritosList = favoritos
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritosViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return FavoritosViewHolder(inflater, parent)
+        return FavoritosViewHolder(inflater, parent, viewModel)
     }
 
-    // Indica el num elementos a mostrar
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount(): Int = favoritosList.size
 
-    // Asignarle datos al viewholder
     override fun onBindViewHolder(holder: FavoritosViewHolder, position: Int) {
-        val favorito = list[position]
-        holder.bind(favorito)
+        val favoritos = favoritosList[position]
+        holder.bind(favoritos)
+
+        holder.btnEliminar?.setOnClickListener {
+            viewModel.eliminarFavorito(favoritos) { success ->
+                if (success) {
+                    val newList = favoritosList.toMutableList()
+                    newList.removeAt(position)
+                    favoritosList = newList
+                    notifyDataSetChanged()
+                } else {
+                    // Manejar error si no se pudo eliminar el favorito
+                    Log.e("FavoritosAdapter", "Error al eliminar favorito")
+                }
+            }
+        }
     }
-
-
 }

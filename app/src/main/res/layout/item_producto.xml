@@ -1,198 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="200dp"
-    android:layout_height="280dp"
-    app:cardCornerRadius="20dp"
-    android:layout_margin="15dp"
-    android:backgroundTint="#242424">
+    android:layout_width="180dp"
+    android:layout_height="290dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="10dp"
+    android:backgroundTint="@color/menu"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:cardCornerRadius="18dp"
+        android:backgroundTint="@color/background">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ff4343">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/discount"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="%"
+                    android:textColor="#ffffff"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <ImageView
+            android:id="@+id/imgProducto"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/item_laptop" />
+
+        <TextView
+            android:id="@+id/nombreProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:paddingLeft="10dp"
+            android:text="Rog Strix G15"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/marcaProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:text="Asus"
+            android:textColor="#ff4343"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:text="S/. "
+                android:textColor="#ff4343"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/precioOfertaProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:text="7650"
+                android:textColor="#ff4343"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="S/. "
+                android:textColor="#fff"
+                android:textSize="12sp"
+
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/precioRealProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:text="8650"
+                android:textColor="#fff"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/favoritoCarrito"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="@color/botones"
+                android:elevation="50dp"
+                android:text="Añadir al carrito"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:cornerRadius="10dp" />
+
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="5dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-9dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/menu"
+                app:cardCornerRadius="50dp"
+                app:elevation="100dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#ff4343">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="20dp"
-                        android:text="-"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:layout_marginStart="5dp"
-                        android:gravity="center"/>
-                    <TextView
-                        android:id="@+id/discount"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="20dp"
-                        android:text="10"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:gravity="center"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1.5"
-                        android:layout_height="20dp"
-                        android:text="%"
-                        android:textSize="8sp"
-                        android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:layout_marginEnd="5dp"
-                        android:gravity="center"/>
-
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/favoritoButton"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/vector_favorite" />
 
             </androidx.cardview.widget.CardView>
-
-            <ImageView
-                android:id="@+id/imageItem"
-                android:layout_width="140dp"
-                android:layout_height="90dp"
-                android:src="@drawable/item_laptop"
-                android:scaleType="centerInside"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/marca"
-                android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:text="Asus"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="#ff4343"
-                android:ellipsize="end"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"/>
-
-            <TextView
-                android:id="@+id/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="Rog Strix G15"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:ellipsize="end"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:text="S/. "
-                    android:layout_marginTop="5dp"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#ff4343"
-                    android:ellipsize="end"/>
-                <TextView
-                    android:id="@+id/costoFinal"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:text="7650"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#ff4343"
-                    android:ellipsize="end"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Normal S/. "
-                    android:textSize="10sp"
-                    android:textStyle="normal"
-                    android:textColor="#FFFFFF"
-                    android:ellipsize="end"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:id="@+id/costoInicial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:text="8650"
-                    android:layout_marginTop="5dp"
-                    android:textSize="10sp"
-                    android:textStyle="normal"
-                    android:textColor="#FFFFFF"
-                    android:ellipsize="end"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
-
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:gravity="center">
-
-                <Button
-                    android:layout_width="110dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Añadir al carrito"
-                    android:textSize="10sp"
-                    android:layout_marginEnd="15dp"
-                    android:backgroundTint="#363636"
-                    app:cornerRadius="10dp"/>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#363636"
-                    app:cardCornerRadius="6dp"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/vector_favorite"
-                        android:layout_gravity="center"/>
-
-                </androidx.cardview.widget.CardView>
-
-
-
-            </LinearLayout>
-
-
 
 
         </LinearLayout>
 
 
+    </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+
+</androidx.cardview.widget.CardView>

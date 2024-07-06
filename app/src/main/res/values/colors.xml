@@ -2,10 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#1A1A1A</color>
-    <color name="menu">#1A1A1A</color>
+    <color name="background">#0F0F0F</color>
+    <color name="menu">#4A4A4A</color>
     <color name="menu_text">#E5E5E5</color>
     <color name="botonIniciar">#FF2D2D</color>
     <color name="linea">#464646</color>
     <color name="clave">#B5B5B5</color>
+    <color name="botones">#1E1E1E</color>
 </resources>
