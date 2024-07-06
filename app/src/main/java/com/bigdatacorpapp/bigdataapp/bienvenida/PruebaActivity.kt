@@ -1,4 +1,6 @@
 package com.bigdatacorpapp.bigdataapp.bienvenida
 
-class PruebaActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class PruebaActivity: AppCompatActivity() {
 }

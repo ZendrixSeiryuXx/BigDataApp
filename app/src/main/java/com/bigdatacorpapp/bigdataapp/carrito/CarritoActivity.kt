@@ -14,7 +14,6 @@ class CarritoActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrito)
 
-
         val backMenu = findViewById<ImageView>(R.id.backMenu)
 
         backMenu.setOnClickListener{

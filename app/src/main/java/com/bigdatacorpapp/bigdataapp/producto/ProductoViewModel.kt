@@ -3,6 +3,7 @@ package com.bigdatacorpapp.bigdataapp.producto
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bigdatacorpapp.bigdataapp.carrito.CarritoRepository
 import com.bigdatacorpapp.bigdataapp.favoritos.FavoritosRepository
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -11,6 +12,7 @@ class ProductoViewModel : ViewModel() {
     val productoListMutable = MutableLiveData<List<Producto>>()
     var productoList = arrayListOf<Producto>()
     private val favoritosRepository = FavoritosRepository()
+    private val carritoRepository = CarritoRepository()
 
     fun getProducto() {
         firestore = FirebaseFirestore.getInstance()
@@ -50,6 +52,21 @@ class ProductoViewModel : ViewModel() {
             }
         }
     }
+
+
+    fun agregarACarrito(userId: String, producto: Producto) {
+        carritoRepository.agregarACarritop(userId, producto){success ->
+            if (success) {
+                Log.d("ProductoViewModel", "Producto agregado a carrito")
+
+            } else {
+                Log.e("ProductoViewModel", "Error al agregar a carrito")
+
+            }
+        }
+    }
+
+
 
 
 }

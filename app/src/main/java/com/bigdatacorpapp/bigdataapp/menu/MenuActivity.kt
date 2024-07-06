@@ -86,10 +86,10 @@ class MenuActivity : AppCompatActivity(), MenuDraweAction {
                     true
                 }
 
-                /*R.id.itemMap ->{
+                R.id.itemMap ->{
                     startActivity(Intent(this, MapaActivity::class.java))
                     true
-                }*/
+                }
 
                 R.id.itemSalir -> {
                     startActivity(Intent(this, LoginActivity::class.java))
@@ -121,12 +121,12 @@ class MenuActivity : AppCompatActivity(), MenuDraweAction {
                     nombreUserTextView.text = nombre ?: "Usuario"
                 } else {
                     Log.d("MenuActivity", "No document found")
-                    nombreUserTextView.text = "Usuario"
+                    nombreUserTextView.text = "Invitado"
                 }
             }
             .addOnFailureListener { exception ->
                 Log.e("MenuActivity", "Error getting document", exception)
-                nombreUserTextView.text = "Usuario"
+                nombreUserTextView.text = "Invitado"
             }
     }
 

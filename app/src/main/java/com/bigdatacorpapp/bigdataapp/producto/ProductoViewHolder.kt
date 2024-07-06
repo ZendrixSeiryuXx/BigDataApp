@@ -21,6 +21,7 @@ class ProductoViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
     private var precioOferta: TextView? = null
 
     private var favoriteButton: ImageView? = null
+    private var carritoButton: Button? = null
 
     init {
         titulo = itemView.findViewById(R.id.nombreProducto)
@@ -29,6 +30,7 @@ class ProductoViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
         precioReal = itemView.findViewById(R.id.precioRealProducto)
         precioOferta = itemView.findViewById(R.id.precioOfertaProducto)
 
+        carritoButton = itemView.findViewById(R.id.carritoBoton)
         favoriteButton = itemView.findViewById(R.id.favoritoButton)
     }
 
@@ -49,5 +51,27 @@ class ProductoViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
         favoriteButton?.setOnClickListener {
             addToFavorites(producto)
         }
+
     }
+
+
+    fun bind2(producto: Producto, addToCarrito: (Producto) -> Unit){
+        titulo?.text = producto.titulo
+        marca?.text = producto.marca
+        precioReal?.text = producto.precioReal
+        precioOferta?.text = producto.precioOferta
+
+        imagen?.let {
+            Glide.with(it.context)
+                .load(producto.imagen)
+                .placeholder(R.drawable.ic_placeholder)
+                .error(R.drawable.ic_placeholder)
+                .into(it)
+        }
+
+        carritoButton?.setOnClickListener {
+            addToCarrito(producto)
+        }
+    }
+
 }

@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductoAdapter(private val addToFavorites: (Producto) -> Unit) :
-    RecyclerView.Adapter<ProductoViewHolder>() {
+class ProductoAdapter(
+    private val addToFavorites: (Producto) -> Unit,
+    private val addToCarrito: (Producto) -> Unit
+) : RecyclerView.Adapter<ProductoViewHolder>() {
 
     private var productoList = emptyList<Producto>()
 
@@ -13,8 +15,6 @@ class ProductoAdapter(private val addToFavorites: (Producto) -> Unit) :
         productoList = producto
         notifyDataSetChanged()
     }
-
-    //new
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,5 +26,6 @@ class ProductoAdapter(private val addToFavorites: (Producto) -> Unit) :
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
         val producto = productoList[position]
         holder.bind(producto, addToFavorites)
+        holder.bind2(producto, addToCarrito)
     }
-    }
+}
