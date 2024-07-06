@@ -14,6 +14,10 @@ class ProductoViewModel : ViewModel() {
     private val favoritosRepository = FavoritosRepository()
     private val carritoRepository = CarritoRepository()
 
+    init {
+        getProducto()
+    }
+
     fun getProducto() {
         firestore = FirebaseFirestore.getInstance()
         firestore.collection("producto")
@@ -66,6 +70,11 @@ class ProductoViewModel : ViewModel() {
         }
     }
 
+
+    fun buscarProductoPorNombre(nombre: String) {
+        val productosFiltrados = productoList.filter { it.titulo.contains(nombre, ignoreCase = true) }
+        productoListMutable.value = productosFiltrados
+    }
 
 
 

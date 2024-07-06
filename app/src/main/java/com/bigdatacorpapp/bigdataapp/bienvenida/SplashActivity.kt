@@ -9,7 +9,7 @@ import com.bigdatacorpapp.bigdataapp.menu.MenuActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    private val splashTimeOut: Long = 3000
+    private val splashTimeOut: Long = 500
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

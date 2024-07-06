@@ -2,6 +2,8 @@ package com.bigdatacorpapp.bigdataapp.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +24,7 @@ import com.bigdatacorpapp.bigdataapp.marca.MarcaAdapter
 import com.bigdatacorpapp.bigdataapp.producto.Producto
 import com.bigdatacorpapp.bigdataapp.producto.ProductoAdapter
 import com.bigdatacorpapp.bigdataapp.producto.ProductoViewModel
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -30,7 +33,6 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: ProductoViewModel
     private lateinit var favoritosViewModel: FavoritosViewModel
     private lateinit var carritoViewModel: CarritoViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +45,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerInicio1 = view.findViewById<RecyclerView>(R.id.recyclerMarcas)
+        val recyclerInicio2 = view.findViewById<RecyclerView>(R.id.recyclerProductos)
+        val edtBuscar = view.findViewById<TextInputEditText>(R.id.edtBuscar)
 
         val listInicio1 = listOf(
             Marca("Asus"),
@@ -55,15 +59,12 @@ class HomeFragment : Fragment() {
         favoritosViewModel = ViewModelProvider(this)[FavoritosViewModel::class.java]
         carritoViewModel = ViewModelProvider(this)[CarritoViewModel::class.java]
 
-        val recyclerInicio2 = view.findViewById<RecyclerView>(R.id.recyclerProductos)
-
         val adapter1 = MarcaAdapter(listInicio1)
 
         val adapter2 = ProductoAdapter(
             { producto -> addToFavorites(producto) },
             { producto -> addToCarrito(producto) }
         )
-
 
         recyclerInicio1.adapter = adapter1
         recyclerInicio2.adapter = adapter2
@@ -76,6 +77,22 @@ class HomeFragment : Fragment() {
                 adapter2.setProducto(it)
             }
         }
+
+        // Añadir el TextWatcher para el campo de búsqueda
+        edtBuscar.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // No se necesita implementar
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // No se necesita implementar
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val textoBusqueda = s.toString()
+                viewModel.buscarProductoPorNombre(textoBusqueda)
+            }
+        })
     }
 
     private fun addToFavorites(producto: Producto) {
@@ -103,7 +120,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun addToCarrito(producto: Producto) {
-
         if (!checkUserAuthentication()) return
 
         val userId = FirebaseAuth.getInstance().currentUser?.uid
@@ -127,7 +143,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun checkUserAuthentication(): Boolean {
         val currentUser = FirebaseAuth.getInstance().currentUser
         return if (currentUser == null) {
@@ -139,9 +154,6 @@ class HomeFragment : Fragment() {
             true
         }
     }
-
-
-
 
     companion object {
         fun newInstance(): HomeFragment = HomeFragment()
