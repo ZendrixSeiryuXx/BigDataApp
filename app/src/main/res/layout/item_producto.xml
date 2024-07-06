@@ -6,7 +6,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="10dp"
-    android:backgroundTint="@color/background"
+    android:backgroundTint="@color/menu"
     app:cardElevation="0dp">
 
     <LinearLayout
@@ -175,23 +175,22 @@
                 android:id="@+id/favoritoCarrito"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#000000"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="@color/botones"
                 android:elevation="50dp"
-                android:text="AÃ±adir al carrito"
+                android:text="Añadir al carrito"
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 app:cornerRadius="10dp" />
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginLeft="-9dp"
                 android:layout_gravity="center"
-
-                android:backgroundTint="#000000"
-                app:cardCornerRadius="10dp"
+                android:backgroundTint="@color/menu"
+                app:cardCornerRadius="50dp"
                 app:elevation="100dp">
 
                 <ImageView

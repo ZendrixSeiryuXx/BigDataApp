@@ -13,43 +13,22 @@
 
     <item
         android:id="@+id/itemAsus"
-        android:title="ASUS"
+        android:title="Coming Soon..."
         />
-
-
-    <item
-        android:id="@+id/itemLenovo"
-        android:title="LENOVO"
-        />
-
-
-
-    <item
-        android:id="@+id/itemGigabyte"
-        android:title="GIGABYTE"
-        />
-
-
-
-    <item
-        android:id="@+id/itemDell"
-        android:title="DELL"
-        />
-
-
-
 
 
 
     <item
         android:id="@+id/itemMap"
         android:title="Nuestra Sede"
+        android:icon="@drawable/store"
         />
 
 
     <item
         android:id="@+id/itemSalir"
         android:title="CerrarSesion"
+        android:icon="@drawable/exit"
 
         />
 
