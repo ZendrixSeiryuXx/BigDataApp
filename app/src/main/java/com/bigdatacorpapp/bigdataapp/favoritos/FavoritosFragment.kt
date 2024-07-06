@@ -28,12 +28,14 @@ class FavoritosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerFavoritos = view.findViewById<RecyclerView>(R.id.recyclerFavoritos)
-        adapter = FavoritosAdapter()
+
+        // Aquí es donde inicializas el adaptador correctamente
+        viewModel = ViewModelProvider(this).get(FavoritosViewModel::class.java)
+        adapter = FavoritosAdapter(viewModel) // Pasas viewModel como argumento
 
         recyclerFavoritos.adapter = adapter
         recyclerFavoritos.layoutManager = LinearLayoutManager(activity)
 
-        viewModel = ViewModelProvider(this).get(FavoritosViewModel::class.java)
         viewModel.getFavoritos()
         viewModel.favoritosListMutable.observe(viewLifecycleOwner) { favoritosList ->
             adapter.setFavoritos(favoritosList)

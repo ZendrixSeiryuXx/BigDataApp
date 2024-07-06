@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 import com.bumptech.glide.Glide
@@ -12,33 +13,32 @@ import com.bumptech.glide.Glide
 class ProductoViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.item_producto, viewGroup, false)) {
 
-    private var discount: TextView? = null
-    private var imageItem: ImageView? = null
+
+    private var titulo: TextView? = null
+    private var imagen: ImageView? = null
     private var marca: TextView? = null
-    private var nombre: TextView? = null
-    private var costoFinal: TextView? = null
-    private var costoInicial: TextView? = null
-    private var favoriteButton: Button? = null
+    private var precioReal: TextView? = null
+    private var precioOferta: TextView? = null
+
+    private var favoriteButton: ImageView? = null
 
     init {
-        discount = itemView.findViewById(R.id.discount)
-        imageItem = itemView.findViewById(R.id.imageItem)
-        marca = itemView.findViewById(R.id.marca)
-        nombre = itemView.findViewById(R.id.nombre)
-        costoFinal = itemView.findViewById(R.id.costoFinal)
-        costoInicial = itemView.findViewById(R.id.costoInicial)
+        titulo = itemView.findViewById(R.id.nombreProducto)
+        imagen = itemView.findViewById(R.id.imgProducto)
+        marca = itemView.findViewById(R.id.marcaProducto)
+        precioReal = itemView.findViewById(R.id.precioRealProducto)
+        precioOferta = itemView.findViewById(R.id.precioOfertaProducto)
+
         favoriteButton = itemView.findViewById(R.id.favoritoButton)
     }
 
     fun bind(producto: Producto, addToFavorites: (Producto) -> Unit) {
-        discount?.text = producto.descuento
+        titulo?.text = producto.titulo
         marca?.text = producto.marca
-        nombre?.text = producto.titulo
-        costoFinal?.text = producto.precio2
-        costoInicial?.text = producto.precio1
+        precioReal?.text = producto.precioReal
+        precioOferta?.text = producto.precioOferta
 
-
-        imageItem?.let {
+        imagen?.let {
             Glide.with(it.context)
                 .load(producto.imagen)
                 .placeholder(R.drawable.ic_placeholder)

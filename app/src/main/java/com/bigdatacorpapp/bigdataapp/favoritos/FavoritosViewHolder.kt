@@ -1,5 +1,6 @@
 package com.bigdatacorpapp.bigdataapp.favoritos
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -8,22 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bigdatacorpapp.bigdataapp.R
 import com.bumptech.glide.Glide
 
-class FavoritosViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
+class FavoritosViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup, private val viewModel: FavoritosViewModel) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.item_favorito, viewGroup, false)) {
 
-    private var titulo: TextView? = itemView.findViewById(R.id.textNombreFavorito)
-    private var marca: TextView? = itemView.findViewById(R.id.textMarcaProducto)
-    private var imagen: ImageView? = itemView.findViewById(R.id.imgProducto)
-    private var precio1: TextView? = itemView.findViewById(R.id.textPrecio)
-    private var precio2: TextView? = itemView.findViewById(R.id.textPrecio)
-    private var descuento: TextView? = itemView.findViewById(R.id.discount)
+
+    private var titulo: TextView? = itemView.findViewById(R.id.nombreFavorito)
+    private var imagen: ImageView? = itemView.findViewById(R.id.imgFavorito)
+    private var marca: TextView? = itemView.findViewById(R.id.marcaFavorito)
+    private var precioReal: TextView? = itemView.findViewById(R.id.precioRealFavorito)
+    private var precioOferta: TextView? = itemView.findViewById(R.id.precioOfertaFavorito)
+
+    var btnEliminar: ImageView? = itemView.findViewById(R.id.btnEliminar)
+
+
 
     fun bind(favoritos: Favoritos) {
         titulo?.text = favoritos.titulo
         marca?.text = favoritos.marca
-        precio1?.text = favoritos.precio1
-        precio2?.text = favoritos.precio2
-        descuento?.text = favoritos.descuento
+        precioReal?.text = favoritos.precioReal
+        precioOferta?.text = favoritos.precioOferta
 
         imagen?.let {
             Glide.with(itemView)
@@ -32,5 +36,19 @@ class FavoritosViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup) :
                 .error(R.drawable.ic_placeholder)
                 .into(it)
         }
+
+        btnEliminar?.setOnClickListener {
+            // Aquí puedes llamar a un método en el ViewModel para eliminar este favorito
+            viewModel.eliminarFavorito(favoritos) { success ->
+                if (success) {
+                    // Eliminación exitosa, puedes actualizar la interfaz si es necesario
+                } else {
+                    // Manejar el error si la eliminación falla
+                    Log.e("FavoritosViewHolder", "Error al eliminar favorito")
+                }
+            }
+        }
     }
+
+
 }

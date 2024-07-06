@@ -73,11 +73,10 @@ class HomeFragment : Fragment() {
             val firestore = FirebaseFirestore.getInstance()
             val favorito = hashMapOf(
                 "titulo" to producto.titulo,
-                "marca" to producto.marca,
                 "imagen" to producto.imagen,
-                "precio1" to producto.precio1,
-                "precio2" to producto.precio2,
-                "descuento" to producto.descuento
+                "marca" to producto.marca,
+                "precioReal" to producto.precioReal,
+                "precioOferta" to producto.precioOferta,
             )
             firestore.collection("usuarios").document(userId)
                 .collection("favoritos").add(favorito)

@@ -10,6 +10,7 @@ class FavoritosViewModel : ViewModel() {
     private lateinit var firestore: FirebaseFirestore
     val favoritosListMutable = MutableLiveData<List<Favoritos>>()
     private val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+    private val favoritosRepository = FavoritosRepository()
 
     fun getFavoritos() {
         firestore = FirebaseFirestore.getInstance()
@@ -19,24 +20,19 @@ class FavoritosViewModel : ViewModel() {
             .addOnSuccessListener { result ->
                 val favoritosList = mutableListOf<Favoritos>()
                 for (document in result) {
-                    val data = document.data
-                    val titulo = data["titulo"] as String
-                    val marca = data["marca"] as String
-                    val imagen = data["imagen"] as String
-                    val precio1 = data["precio1"] as String
-                    val precio2 = data["precio2"] as String
-                    val descuento = data["descuento"] as String
 
-                    favoritosList.add(
-                        Favoritos(
-                            titulo,
-                            marca,
-                            imagen,
-                            precio1,
-                            precio2,
-                            descuento
-                        )
-                    )
+                    val data = document.data
+                    val id = document.id
+
+                    val titulo = data["titulo"] as? String ?: ""
+                    val imagen = data["imagen"] as? String ?: ""
+                    val marca = data["marca"] as? String ?: ""
+                    val descripción = data["descripción"] as? String ?: ""
+                    val precioReal = data["precioReal"]as? String ?: ""
+                    val precioOferta = data["precioOferta"] as? String ?: ""
+
+                    val favorito = Favoritos(id, titulo, imagen, marca, descripción , precioReal, precioOferta)
+                    favoritosList.add(favorito)
                 }
                 favoritosListMutable.value = favoritosList
             }
@@ -45,4 +41,14 @@ class FavoritosViewModel : ViewModel() {
                 favoritosListMutable.value = emptyList() // Manejo de errores, se puede manejar según la lógica de la aplicación
             }
     }
+
+
+    fun eliminarFavorito(favoritos: Favoritos, onComplete: (Boolean) -> Unit) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        favoritosRepository.eliminarFavorito(userId, favoritos) { success ->
+            onComplete(success)
+        }
+    }
+
+
 }

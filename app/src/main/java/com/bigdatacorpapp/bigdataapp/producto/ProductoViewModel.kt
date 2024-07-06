@@ -22,14 +22,14 @@ class ProductoViewModel : ViewModel() {
                     val id = document.id
                     val data = document.data
 
-                    val titulo = data["titulo"] as String
-                    val marca = data["marca"] as String
-                    val imagen = data["imagen"] as String
-                    val precio1 = data["precio1"] as String
-                    val precio2 = data["precio2"] as String
-                    val descuento = data["descuento"] as String
+                    val titulo = data["titulo"] as? String ?: ""
+                    val imagen = data["imagen"] as? String ?: ""
+                    val marca = data["marca"] as? String ?: ""
+                    val descripción = data["descripción"] as? String ?: ""
+                    val precioReal = data["precioReal"] as? String ?: ""
+                    val precioOferta = data["precioOferta"]  as? String ?: ""
 
-                    val producto = Producto(id, titulo, marca, imagen, precio1, precio2, descuento)
+                    val producto = Producto(id, titulo, imagen, marca, descripción, precioReal, precioOferta)
                     productoList.add(producto)
                 }
                 productoListMutable.value = productoList
@@ -43,10 +43,10 @@ class ProductoViewModel : ViewModel() {
         favoritosRepository.agregarAFavoritos(userId, producto) { success ->
             if (success) {
                 Log.d("ProductoViewModel", "Producto agregado a favoritos")
-                // Aquí podrías actualizar la UI o realizar alguna acción adicional si es necesario
+
             } else {
                 Log.e("ProductoViewModel", "Error al agregar a favoritos")
-                // Manejo de error si falla la operación de agregar a favoritos
+
             }
         }
     }
